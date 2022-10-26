@@ -1,0 +1,71 @@
+Microsoft Windows [Version 10.0.22000.1098]
+(c) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
+
+C:\Users\Ivan>curl localhost:8080/books
+123,,,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl localhost:8080/books
+123,,,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl localhost:8080/books
+123,,,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl -X POST localhost:8080/books/curlBook
+1
+C:\Users\Ivan>curl -X POST localhost:8080/books/curlBook12
+2
+C:\Users\Ivan>curl localhost:8080/books
+123,curlBook,curlBook12,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl -X PUT localhost:8080/books/0/curlBook
+
+C:\Users\Ivan>curl localhost:8080/books
+123,curlBook,curlBook12,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl localhost:8080/books
+,,,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl -X POST localhost:8080/books/curlBook
+0
+C:\Users\Ivan>curl -X POST localhost:8080/books/curlBook1
+1
+C:\Users\Ivan>curl -X POST localhost:8080/books/curlBook2
+2
+C:\Users\Ivan>curl localhost:8080/books
+curlBook,curlBook1,curlBook2,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl -X DELETE localhost:8080/books/0
+
+C:\Users\Ivan>curl localhost:8080/books
+,curlBook1,curlBook2,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl -X DELETE localhost:8080/books/123
+{"timestamp":"2022-10-26T07:24:49.795+00:00","status":500,"error":"Internal Server Error","path":"/books/123"}
+C:\Users\Ivan>curl -X DELETE localhost:8080/books/123
+Index must be less than 20
+C:\Users\Ivan>curl -X DELETE localhost:8080/books/123
+Index must be less than 20
+C:\Users\Ivan>curl -X DELETE localhost:8080/books/123
+Index must be less than 20
+C:\Users\Ivan>curl -X DELETE localhost:8080/books/123
+Index must be less than 20
+C:\Users\Ivan>curl -X POST localhost:8080/books/curlBook2
+0
+C:\Users\Ivan>curl -X POST localhost:8080/books/curlBook1
+1
+C:\Users\Ivan>curl -X POST localhost:8080/books/curlBook
+2
+C:\Users\Ivan>curl -X POST localhost:8080/books -d newMwthod
+0
+C:\Users\Ivan>curl localhost:8080/books
+newMwthod=,,,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl -X POST localhost:8080/books -d "newMwthod"
+1
+C:\Users\Ivan>curl localhost:8080/books
+newMwthod=,newMwthod=,,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl -X POST localhost:8080/books -H "Content -Type: text/plain" -d "newMethod1"
+<!doctype html><html lang="en"><head><title>HTTP Status 400 – Bad Request</title><style type="text/css">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 400 – Bad Request</h1></body></html>
+C:\Users\Ivan>curl localhost:8080/books
+newMwthod=,newMwthod=,,,,,,,,,,,,,,,,,,
+C:\Users\Ivan>curl -X POST localhost:8080/books -H "Content -Type: text/plain" -d "newMethod1"
+<!doctype html><html lang="en"><head><title>HTTP Status 400 – Bad Request</title><style type="text/css">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 400 – Bad Request</h1></body></html>
+C:\Users\Ivan>curl -X POST localhost:8080/books -H "Content-Type: text/plain" -d "newMethod1"
+0
+C:\Users\Ivan>curl -X POST localhost:8080/books -H "Content-Type: text/plain" -d "newMethod2"
+1
+C:\Users\Ivan>curl -X POST localhost:8080/books -H "Content-Type: text/plain" -d "nMethod2"
+2
+
+http://localhost:8080/books?prefix=new
